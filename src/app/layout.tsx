@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Pika | Daily Learning Momentum",
-  description:
-    "Pika helps online classrooms track attendance and learning momentum with daily student check-ins.",
+  title: "Pika Classroom",
+  description: "Pika Classroom marketing and info site.",
 };
+
+const themeInitScript = `
+(() => {
+  const root = document.documentElement;
+  let storedTheme = null;
+  try {
+    storedTheme = localStorage.getItem('theme');
+  } catch {}
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : (prefersDark ? 'dark' : 'light');
+  root.classList.toggle('dark', theme === 'dark');
+  root.style.colorScheme = theme;
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -24,10 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${fraunces.variable} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="min-h-screen bg-page text-text-default antialiased">{children}</body>
     </html>
   );
 }

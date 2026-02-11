@@ -1,33 +1,80 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f5ef;
-  --foreground: #1d2a3a;
-  --surface: #fffdf8;
-  --ink-muted: #4c5c6b;
-  --brand: #e26b42;
-  --brand-deep: #b64a28;
-  --accent: #f2ce3f;
+  --pika-color-page: #f9fafb;
+  --pika-color-surface: #ffffff;
+  --pika-color-surface-2: #f9fafb;
+  --pika-color-surface-hover: #f3f4f6;
+  --pika-color-border: #e5e7eb;
+  --pika-color-border-strong: #d1d5db;
+  --pika-color-text-default: #111827;
+  --pika-color-text-muted: #6b7280;
+  --pika-color-text-inverse: #ffffff;
+  --pika-color-primary: #2563eb;
+  --pika-color-primary-hover: #1d4ed8;
+  --pika-shadow-elevated: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --pika-radius-card: 0.75rem;
+  --pika-radius-control: 0.5rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-space-grotesk);
-  --font-display: var(--font-fraunces);
+  --color-page: var(--pika-color-page);
+  --color-surface: var(--pika-color-surface);
+  --color-surface-2: var(--pika-color-surface-2);
+  --color-surface-hover: var(--pika-color-surface-hover);
+  --color-border: var(--pika-color-border);
+  --color-border-strong: var(--pika-color-border-strong);
+  --color-text-default: var(--pika-color-text-default);
+  --color-text-muted: var(--pika-color-text-muted);
+  --color-text-inverse: var(--pika-color-text-inverse);
+  --color-primary: var(--pika-color-primary);
+  --color-primary-hover: var(--pika-color-primary-hover);
+  --shadow-elevated: var(--pika-shadow-elevated);
+  --radius-card: var(--pika-radius-card);
+  --radius-control: var(--pika-radius-control);
+}
+
+.dark {
+  --pika-color-page: #030712;
+  --pika-color-surface: #111827;
+  --pika-color-surface-2: #1f2937;
+  --pika-color-surface-hover: #1f2937;
+  --pika-color-border: #374151;
+  --pika-color-border-strong: #4b5563;
+  --pika-color-text-default: #f3f4f6;
+  --pika-color-text-muted: #9ca3af;
+  --pika-color-text-inverse: #ffffff;
+  --pika-color-primary: #3b82f6;
+  --pika-color-primary-hover: #2563eb;
+  --pika-shadow-elevated: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
 }
 
 body {
   background:
-    radial-gradient(circle at top right, rgba(242, 206, 63, 0.35), transparent 30%),
-    radial-gradient(circle at 20% 20%, rgba(226, 107, 66, 0.2), transparent 35%),
-    var(--background);
-  color: var(--foreground);
-  font-family: var(--font-space-grotesk), sans-serif;
+    radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--pika-color-primary) 10%, transparent), transparent 35%),
+    var(--pika-color-page);
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-fraunces), serif;
+.fade-in-section {
+  animation: fade-in-up 560ms ease both;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
