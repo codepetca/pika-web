@@ -1,16 +1,9 @@
 import FadeInSection from "@/components/FadeInSection";
-import ThemeToggle from "@/components/ThemeToggle";
 import { CheckCircle2, Laptop2, PlayCircle, Users } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center gap-5 px-6 py-10 md:py-16">
-      <header className="w-full px-1">
-        <div className="flex items-center justify-end">
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <main className="mx-auto flex min-h-screen max-w-5xl flex-col justify-start gap-5 px-6 py-6 md:py-10">
       <FadeInSection className="w-full rounded-card border border-border bg-surface p-8 shadow-elevated md:p-12">
         <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">Pika Classroom</h1>
         <p className="mt-4 max-w-2xl text-lg text-text-muted">Learning simplified.</p>
@@ -30,7 +23,7 @@ export default function Home() {
         </div>
       </FadeInSection>
 
-      <FadeInSection delayMs={80} className="w-full rounded-card border border-border bg-surface p-7 shadow-elevated md:p-10">
+      <FadeInSection delayMs={80} className="w-full border border-transparent bg-transparent p-7 shadow-none md:p-10">
         <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">What is Pika Classroom?</h2>
         <p className="mt-3 max-w-3xl text-base text-text-muted">
           Pika Classroom is a modern classroom for learning across online and in-person classes, built to keep teachers
@@ -57,11 +50,8 @@ export default function Home() {
         </ul>
       </FadeInSection>
 
-      <FadeInSection delayMs={160} className="w-full rounded-card border border-border bg-surface p-7 shadow-elevated md:p-10">
+      <FadeInSection delayMs={160} className="w-full rounded-card border border-border bg-transparent p-7 shadow-elevated md:p-10">
         <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Tutorials and quick-start guides</h2>
-        <p className="mt-3 max-w-3xl text-base text-text-muted">
-          Video tutorials and simple guides are coming next to make onboarding convenient for both teachers and students.
-        </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#"
